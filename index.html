@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lisbonne · Août 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --night: #0d1b2a;
+    --night2: #152638;
+    --azul: #2155a3;
+    --azul-light: #4a80d4;
+    --sand: #f0e8d5;
+    --sand2: #faf8f4;
+    --terra: #c4622d;
+    --terra-light: #e8845a;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-muted: #6b7280;
+    --green: #2d6a4f;
+    --green-light: #e8f5ee;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--sand2);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── AZULEJO HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--night);
+  }
+
+  .azulejo-bg {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    opacity: 0.18;
+  }
+
+  .tile {
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    animation: tileFade 4s ease-in-out infinite;
+  }
+
+  .tile:nth-child(3n) { animation-delay: 0.5s; }
+  .tile:nth-child(5n) { animation-delay: 1s; }
+  .tile:nth-child(7n) { animation-delay: 1.5s; }
+
+  @keyframes tileFade {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(65, 128, 212, 0.3); }
+  }
+
+  .tile svg { width: 60%; height: 60%; fill: none; stroke: #4a80d4; stroke-width: 1.5; }
+
+  .hero-photo {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1600&q=80');
+    background-size: cover;
+    background-position: center 40%;
+    opacity: 0.35;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--terra-light);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--sand);
+  }
+
+  .hero-dates {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-chips {
+    display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--night);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--sand);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex; gap: 0.25rem; list-style: none;
+    overflow-x: auto; scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar { display: none; }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+
+  /* ── SECTION LAYOUT ── */
+  .section-label {
+    padding: 5rem 2rem 0;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--night);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── DAYS ── */
+  #programme { padding-bottom: 2rem; }
+
+  .day-card {
+    max-width: 1100px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .day-card.visible { opacity: 1; transform: translateY(0); }
+
+  .day-inner {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 700px) {
+    .day-inner { grid-template-columns: 1fr; }
+    .day-photo { height: 220px; }
+  }
+
+  .day-photo {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+  }
+
+  .day-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .day-card:hover .day-photo img { transform: scale(1.04); }
+
+  .day-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(13,27,42,0.5) 0%, transparent 60%);
+  }
+
+  .day-number {
+    position: absolute; top: 1.25rem; left: 1.25rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    background: rgba(13,27,42,0.6);
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    backdrop-filter: blur(6px);
+  }
+
+  .day-badge {
+    position: absolute; bottom: 1.25rem; left: 1.25rem;
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+    backdrop-filter: blur(6px);
+  }
+
+  .badge-picnic { background: rgba(45,106,79,0.85); color: #b7f5d4; }
+  .badge-warn   { background: rgba(196,98,45,0.85); color: #ffe4d4; }
+  .badge-city   { background: rgba(33,85,163,0.85); color: #d4e8ff; }
+
+  .day-content {
+    background: var(--white);
+    padding: 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .day-date {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 0.5rem;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--night);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .day-items { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .day-item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0.75rem;
+    align-items: start;
+  }
+
+  .item-time {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--azul);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding-top: 0.15rem;
+  }
+
+  .item-text {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #374151;
+  }
+
+  .item-text strong { color: var(--night); font-weight: 600; }
+  .item-text .warn { color: var(--terra); font-weight: 600; }
+
+  /* ── MAP ── */
+  #carte {
+    background: var(--night);
+    padding: 5rem 2rem;
+  }
+
+  #carte .section-eyebrow { color: var(--terra-light); }
+  #carte .section-heading { color: var(--white); margin-bottom: 2rem; }
+
+  .map-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .map-wrapper iframe {
+    width: 100%;
+    height: 520px;
+    border: none;
+    display: block;
+  }
+
+  .map-legend {
+    max-width: 1100px;
+    margin: 1.5rem auto 0;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.78rem;
+  }
+
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── PENSE-BÊTE ── */
+  #pensebete {
+    padding: 5rem 2rem;
+    background: var(--sand);
+  }
+
+  .reminders-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .reminder-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--green);
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+
+  .reminder-card.urgent { border-left-color: var(--terra); }
+
+  .reminder-day {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .reminder-card.urgent .reminder-day { color: var(--terra); }
+
+  .reminder-text {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #374151;
+  }
+
+  .reminder-icon { font-size: 1.4rem; margin-bottom: 0.25rem; }
+
+  /* ── RÉSERVATIONS ── */
+  #reservations {
+    padding: 4rem 2rem 5rem;
+    background: var(--sand2);
+  }
+
+  .resa-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .resa-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex; flex-direction: column; gap: 0.4rem;
+    border-top: 3px solid var(--azul);
+  }
+
+  .resa-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--night);
+  }
+
+  .resa-detail {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .resa-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--night);
+    text-align: center;
+    padding: 3rem 2rem;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+
+  footer span { color: var(--terra-light); }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="azulejo-bg" id="azulejo"></div>
+  <div class="hero-photo"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Mon programme de voyage</p>
+    <h1 class="hero-title">Lis<em>bonne</em></h1>
+    <p class="hero-dates">8 — 15 août 2025 · Almada</p>
+    <div class="hero-chips">
+      <span class="chip">🏖 4 jours de plage</span>
+      <span class="chip">🐠 Océanarium</span>
+      <span class="chip">🌊 Arrábida</span>
+      <span class="chip">🛍 Shopping</span>
+      <span class="chip">🍴 Gastronomie</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Défiler</div>
+</section>
+
+<!-- ── NAV ── -->
+<nav>
+  <span class="nav-brand">Lisbonne · Août</span>
+  <ul class="nav-links">
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#carte">Carte</a></li>
+    <li><a href="#pensebete">Pique-nique</a></li>
+    <li><a href="#reservations">Réservations</a></li>
+  </ul>
+</nav>
+
+<!-- ── PROGRAMME ── -->
+<section id="programme">
+  <div class="section-label">
+    <p class="section-eyebrow">Jour par jour</p>
+    <h2 class="section-heading">Le programme complet</h2>
+  </div>
+
+  <!-- Jour 1 -->
+  <div class="day-card" id="j1">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Time Out Market Lisbonne" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 1</div>
+        <div class="day-badge"><span class="badge badge-city">Arrivée</span></div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Samedi 8 août</p>
+        <h3 class="day-title">Arrivée à Lisbonne</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">22h00</span>
+            <span class="item-text">Arrivée à Almada — installation dans l'appartement</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Soir</span>
+            <span class="item-text">Dîner au <strong>Time Out Market</strong> ou resto proche de l'appart</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time"></span>
+            <span class="item-text">Pas de courses ce soir — repos mérité 🛌</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jour 2 -->
+  <div class="day-card" id="j2">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80" alt="Belém Lisbonne" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 2</div>
+        <div class="day-badge"><span class="badge badge-city">Lisbonne</span></div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Dimanche 9 août</p>
+        <h3 class="day-title">Courses · Belém · LX Factory</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">Matin</span>
+            <span class="item-text">Courses au supermarché pour la semaine</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Matinée</span>
+            <span class="item-text"><strong>Pastéis de Belém</strong> — la maison mère depuis 1837, arriver tôt</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Après-midi</span>
+            <span class="item-text"><strong>LX Factory</strong> — marché du dimanche (artisans, créateurs, producteurs)</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Soir</span>
+            <span class="item-text">Dîner sur place ou dans le quartier de Belém</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jour 3 -->
+  <div class="day-card" id="j3">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Costa da Caparica plage" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 3</div>
+        <div class="day-badge">
+          <span class="badge badge-picnic">🧺 Pique-nique</span>
+        </div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Lundi 10 août</p>
+        <h3 class="day-title">Costa da Caparica</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">Matin</span>
+            <span class="item-text">Départ tôt en voiture — <span class="warn">parking vite plein en août !</span></span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Journée</span>
+            <span class="item-text">Plage à <strong>Costa da Caparica</strong> — pique-nique sur place</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Retour</span>
+            <span class="item-text">Retour Almada — douche et changement</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Soir</span>
+            <span class="item-text">Dîner à <strong>Cacilhas</strong> — fruits de mer avec vue sur Lisbonne illuminée</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jour 4 -->
+  <div class="day-card" id="j4">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Aquarium poissons" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 4</div>
+        <div class="day-badge"><span class="badge badge-city">Lisbonne</span></div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Mardi 11 août</p>
+        <h3 class="day-title">Océanarium · Colombo · Mercado da Ribeira</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">Matin</span>
+            <span class="item-text"><strong>Océanarium de Lisbonne</strong> (Parque das Nações) — prévoir 2h</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time"></span>
+            <span class="item-text"><span class="warn">⚠ Réserver en ligne à l'avance sur oceanario.pt</span></span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Retour</span>
+            <span class="item-text">Retour Almada — douche et changement</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Après-midi</span>
+            <span class="item-text">Shopping au <strong>Colombo</strong> (ouvert jusqu'à minuit)</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Soir</span>
+            <span class="item-text">Dîner au <strong>Mercado da Ribeira</strong> — goûter plusieurs stands</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jour 5 -->
+  <div class="day-card" id="j5">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=80" alt="Plage vagues" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 5</div>
+        <div class="day-badge">
+          <span class="badge badge-picnic">🧺 Pique-nique</span>
+        </div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Mercredi 12 août</p>
+        <h3 class="day-title">Costa da Caparica</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">Journée</span>
+            <span class="item-text">Plage à <strong>Caparica</strong> — explorer une section différente de la côte (30 km, chaque numéro a son ambiance)</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Retour</span>
+            <span class="item-text">Retour Almada — douche et changement</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Soir</span>
+            <span class="item-text">Dîner à Almada ou Lisbonne</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jour 6 -->
+  <div class="day-card" id="j6">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80" alt="Arrábida eau turquoise" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 6</div>
+        <div class="day-badge">
+          <span class="badge badge-picnic">🧺 Pique-nique</span>
+          <span class="badge badge-warn">⚠ Partir tôt</span>
+        </div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Jeudi 13 août</p>
+        <h3 class="day-title">Arrábida — La claque</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">7h30</span>
+            <span class="item-text">Départ depuis Almada — ~45 min de route</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time"></span>
+            <span class="item-text"><span class="warn">⚠ Réserver le créneau d'accès en ligne (quota journalier) — indispensable !</span></span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Journée</span>
+            <span class="item-text"><strong>Praia do Portinho da Arrábida</strong> — eau turquoise, falaises blanches, parc naturel protégé. Prévoir assez à boire.</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Retour</span>
+            <span class="item-text">Retour Almada — douche et changement</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Soir</span>
+            <span class="item-text">Dîner à <strong>Almada ou Cacilhas</strong></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jour 7 -->
+  <div class="day-card" id="j7">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Cascais Portugal" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 7</div>
+        <div class="day-badge">
+          <span class="badge badge-picnic">🧺 Pique-nique</span>
+        </div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Vendredi 14 août</p>
+        <h3 class="day-title">Caparica · Cascais</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">Matin</span>
+            <span class="item-text">Dernière matinée plage à <strong>Caparica</strong> — partir vers 12h30</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Retour</span>
+            <span class="item-text">Retour Almada — douche et changement</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Après-midi</span>
+            <span class="item-text">Route vers <strong>Cascais</strong> (~45 min via A5) — balade dans le village balnéaire</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Soir</span>
+            <span class="item-text">Dîner à Cascais — dernière soirée !</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jour 8 -->
+  <div class="day-card" id="j8">
+    <div class="day-inner">
+      <div class="day-photo">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Départ voyage" loading="lazy">
+        <div class="day-photo-overlay"></div>
+        <div class="day-number">Jour 8</div>
+        <div class="day-badge"><span class="badge badge-city">Départ</span></div>
+      </div>
+      <div class="day-content">
+        <p class="day-date">Samedi 15 août</p>
+        <h3 class="day-title">Au revoir Lisbonne</h3>
+        <ul class="day-items">
+          <li class="day-item">
+            <span class="item-time">Matin</span>
+            <span class="item-text">Café à <strong>Cacilhas</strong> avec vue sur le Tage et le Cristo Rei</span>
+          </li>
+          <li class="day-item">
+            <span class="item-time">Midi</span>
+            <span class="item-text">Départ ✈ — bon retour !</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARTE ── -->
+<section id="carte">
+  <div class="section-label" style="padding-top:0; margin-bottom:2rem;">
+    <p class="section-eyebrow" style="color:var(--terra-light)">Tous les spots</p>
+    <h2 class="section-heading" style="color:var(--white)">La carte interactive</h2>
+  </div>
+  <div class="map-wrapper" style="max-width:1100px;margin:0 auto;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m56!1m12!1m3!1d390316.2!2d-9.4!3d38.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m41!3e0!4m5!1s0xd19340f4a3ccff5%3A0x521a7c9c0e0b0bef!2sAlmada%2C+Portugal!3m2!1d38.6768!2d-9.1572!4m5!1s0xd19340f4a3ccff5%3A0x23c8521a7c9c0e0b!2sPast%C3%A9is+de+Bel%C3%A9m%2C+Lisbonne!3m2!1d38.6975!2d-9.2032!4m5!1s0xd1933b1c46c1019%3A0x1da9b6a0fd14acb7!2sLX+Factory%2C+Lisbonne!3m2!1d38.7035!2d-9.1788!4m5!1s0xd19316b98059fe7%3A0x7f8b12d0f8b12d0f!2sOc%C3%A9anarium+de+Lisbonne!3m2!1d38.7635!2d-9.0937!4m5!1s0xd194f8e5e6e5e6e5%3A0x1da9b6a0fd14acb7!2sCosta+da+Caparica!3m2!1d38.6396!2d-9.2302!4m5!1s0xd1940c96c2e2e2e2%3A0x23c8521a7c9c0e0b!2sPraia+do+Portinho+da+Arr%C3%A1bida!3m2!1d38.4801!2d-8.9785!4m5!1s0xd1ece1c1c1c1c1c1%3A0x521a7c9c0e0b0bef!2sCascais%2C+Portugal!3m2!1d38.6979!2d-9.4215!5e0!3m2!1sfr!2sfr!4v1720000000000!5m2!1sfr!2sfr"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Carte du voyage à Lisbonne">
+    </iframe>
+  </div>
+  <div class="map-legend" style="max-width:1100px;margin:1.5rem auto 0;padding:0 2rem;">
+    <div class="legend-item"><div class="legend-dot" style="background:#2155a3"></div>Almada (base)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c4622d"></div>Caparica (×4 jours)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4a80d4"></div>Lisbonne — activités</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2d6a4f"></div>Arrábida</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7c3aed"></div>Cascais</div>
+  </div>
+</section>
+
+<!-- ── PENSE-BÊTE ── -->
+<section id="pensebete">
+  <div class="section-label" style="padding-top:0;margin-bottom:2rem;">
+    <p class="section-eyebrow">Ne pas oublier</p>
+    <h2 class="section-heading">🧺 Pense-bêtes pique-nique</h2>
+  </div>
+  <div class="reminders-grid">
+    <div class="reminder-card">
+      <div class="reminder-icon">🏖</div>
+      <p class="reminder-day">Lundi 10 — Caparica</p>
+      <p class="reminder-text">Préparer le matin avant de partir. Tu as fait les courses le dimanche — tout est là.</p>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🌊</div>
+      <p class="reminder-day">Mercredi 12 — Caparica</p>
+      <p class="reminder-text">Préparer le matin. Tu as le mardi pour faire des courses complémentaires si besoin.</p>
+    </div>
+    <div class="reminder-card urgent">
+      <div class="reminder-icon">⚠️</div>
+      <p class="reminder-day">Jeudi 13 — Arrábida · PRIORITÉ</p>
+      <p class="reminder-text">Préparer <strong>le mercredi soir</strong>. Départ à 7h30 — pas le temps le matin. Prévoir beaucoup à boire, aucun commerce à proximité de la plage.</p>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🛍</div>
+      <p class="reminder-day">Vendredi 14 — Caparica</p>
+      <p class="reminder-text">Repas léger suffit — tu quittes la plage à 12h30 et tu dînes à Cascais le soir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── RÉSERVATIONS ── -->
+<section id="reservations">
+  <div class="section-label" style="padding-top:0;margin-bottom:2rem;">
+    <p class="section-eyebrow">Avant de partir</p>
+    <h2 class="section-heading">📋 Réservations obligatoires</h2>
+  </div>
+  <div class="resa-grid">
+    <div class="resa-card">
+      <div class="resa-icon">🐠</div>
+      <p class="resa-name">Océanarium de Lisbonne</p>
+      <p class="resa-detail">Réserver en ligne sur <strong>oceanario.pt</strong> — très fréquenté en août, les créneaux partent vite.</p>
+    </div>
+    <div class="resa-card">
+      <div class="resa-icon">🌿</div>
+      <p class="resa-name">Accès Arrábida</p>
+      <p class="resa-detail">Réserver le créneau horaire sur le <strong>site du Parc Naturel de l'Arrábida</strong>. Quota journalier en été — indispensable, sans ça tu ne peux pas entrer en voiture.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  Bon voyage à <span>Lisbonne</span> ! ☀️
+</footer>
+
+<script>
+  // Azulejo tiles
+  const grid = document.getElementById('azulejo');
+  const svgPatterns = [
+    `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" stroke-width="2"/><line x1="0" y1="20" x2="40" y2="20"/><line x1="20" y1="0" x2="20" y2="40"/></svg>`,
+    `<svg viewBox="0 0 40 40"><polygon points="20,4 36,36 4,36" stroke-width="2"/></svg>`,
+    `<svg viewBox="0 0 40 40"><rect x="8" y="8" width="24" height="24" rx="2" stroke-width="2"/><rect x="14" y="14" width="12" height="12" rx="1" stroke-width="2"/></svg>`,
+    `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="8" stroke-width="2"/><circle cx="20" cy="20" r="15" stroke-width="1.5"/></svg>`,
+    `<svg viewBox="0 0 40 40"><line x1="4" y1="4" x2="36" y2="36" stroke-width="2"/><line x1="36" y1="4" x2="4" y2="36" stroke-width="2"/><circle cx="20" cy="20" r="8" stroke-width="2"/></svg>`,
+  ];
+  for (let i = 0; i < 80; i++) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.innerHTML = svgPatterns[i % svgPatterns.length];
+    grid.appendChild(tile);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.day-card').forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
