@@ -350,135 +350,115 @@ footer span{color:var(--terra-l)}
 </section>
 
 <!-- CARTE SVG simple -->
-<section id="carte">
-  <div class="s-intro" style="padding-top:0;margin-bottom:1.5rem">
-    <p class="eyebrow" style="color:var(--terra-l)">Repères géographiques</p>
-    <h2 class="s-title" style="color:#fff">La carte des étapes</h2>
-  </div>
-  <div class="map-wrap">
-    <div class="map-svg-wrap">
-      <svg id="map" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="shadow">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/>
-          </filter>
-        </defs>
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
-        <!-- Fond mer / Atlantique -->
-        <rect width="700" height="480" fill="#0d1f35" rx="8"/>
+<style>
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-        <!-- Terre (Portugal simplifié dans la zone) -->
-        <!-- Zone principale terre -->
-        <path d="M 200 0 L 700 0 L 700 480 L 280 480 L 240 420 L 200 380 L 180 320 L 190 260 L 210 200 L 200 140 L 200 0 Z"
-              fill="#1e3a28" opacity="0.85"/>
+#map {
+    width: 100%;
+    height: 100%;
+}
 
-        <!-- Péninsule de Setúbal / Arrábida vers le sud -->
-        <path d="M 280 480 L 260 440 L 240 420 L 230 400 L 250 390 L 280 395 L 310 410 L 330 440 L 320 480 Z"
-              fill="#1e3a28" opacity="0.85"/>
+.leaflet-popup-content-wrapper {
+    border-radius: 16px;
+    padding: 6px;
+}
 
-        <!-- Estuaire du Tage (bleu) -->
-        <path d="M 310 165 L 370 170 L 400 190 L 410 215 L 390 235 L 350 240 L 310 230 L 295 210 L 300 185 Z"
-              fill="#0d3358" opacity="0.9"/>
-        <!-- Label Tage -->
-        <text x="352" y="205" fill="rgba(100,160,220,0.7)" font-size="9" text-anchor="middle" font-style="italic">Rio Tejo</text>
+.leaflet-popup-content {
+    margin: 10px 14px;
+}
 
-        <!-- Océan Atlantique label -->
-        <text x="90" y="240" fill="rgba(100,160,220,0.45)" font-size="12" text-anchor="middle" font-style="italic" transform="rotate(-15, 90, 240)">Atlantique</text>
+.popup-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
 
-        <!-- Routes principales (tirets) -->
-        <!-- A5 vers Cascais -->
-        <line x1="330" y1="195" x2="175" y2="178" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
-        <!-- Route vers Arrábida -->
-        <line x1="330" y1="230" x2="340" y2="370" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
-        <!-- Route vers Parque das Nações -->
-        <line x1="370" y1="185" x2="490" y2="170" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
+.popup-text {
+    color: #666;
+    font-size: 14px;
+}
 
-        <!-- ========= MARQUEURS ========= -->
+.custom-marker {
+    width: 18px;
+    height: 18px;
+    background: #007AFF;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+</style>
+</head>
 
-        <!-- 🏠 Almada / Base (étoile) -->
-        <g transform="translate(330, 222)" filter="url(#shadow)">
-          <circle r="14" fill="#2155a3" opacity="0.95"/>
-          <text y="5" text-anchor="middle" fill="white" font-size="13">🏠</text>
-        </g>
-        <text x="330" y="248" text-anchor="middle" fill="white" font-size="9" font-weight="600">Almada</text>
-        <text x="330" y="259" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7.5">Base</text>
+<body>
 
-        <!-- 1 Time Out Market (J1) — Lisbonne centre -->
-        <g transform="translate(355, 188)" filter="url(#shadow)">
-          <circle r="12" fill="#c4622d"/>
-          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">1</text>
-        </g>
-        <text x="390" y="183" fill="white" font-size="8.5" font-weight="500">Time Out</text>
-        <text x="390" y="193" fill="white" font-size="8.5" font-weight="500">Market</text>
+<div id="map"></div>
 
-        <!-- 2 Belém + LX Factory (J2) -->
-        <g transform="translate(310, 195)" filter="url(#shadow)">
-          <circle r="12" fill="#c4622d"/>
-          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">2</text>
-        </g>
-        <text x="245" y="190" fill="white" font-size="8.5" font-weight="500">Belém /</text>
-        <text x="245" y="200" fill="white" font-size="8.5" font-weight="500">LX Factory</text>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-        <!-- 3 Costa da Caparica (J3, J5, J7 matin) -->
-        <g transform="translate(262, 282)" filter="url(#shadow)">
-          <circle r="14" fill="#e07b20"/>
-          <text y="5" text-anchor="middle" fill="white" font-size="11" font-weight="700">3</text>
-        </g>
-        <text x="216" y="278" fill="white" font-size="8.5" font-weight="500">Costa da</text>
-        <text x="216" y="288" fill="white" font-size="8.5" font-weight="500">Caparica</text>
-        <text x="216" y="298" fill="rgba(255,255,255,0.6)" font-size="7">×4 jours</text>
+<script>
 
-        <!-- 4 Océanarium (J4) -->
-        <g transform="translate(490, 168)" filter="url(#shadow)">
-          <circle r="12" fill="#c4622d"/>
-          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">4</text>
-        </g>
-        <text x="508" y="163" fill="white" font-size="8.5" font-weight="500">Océanarium</text>
-        <text x="508" y="173" fill="rgba(255,255,255,0.6)" font-size="7.5">Parque Nações</text>
+// Création de la carte
+const map = L.map('map', {
+    zoomControl: true
+});
 
-        <!-- 5 Arrábida (J6) -->
-        <g transform="translate(340, 378)" filter="url(#shadow)">
-          <circle r="13" fill="#2d6a4f"/>
-          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">5</text>
-        </g>
-        <text x="362" y="373" fill="white" font-size="8.5" font-weight="500">Arrábida</text>
-        <text x="362" y="383" fill="rgba(255,255,255,0.6)" font-size="7.5">Parc naturel</text>
+// Fond de carte moderne (Carto Voyager)
+L.tileLayer(
+'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+{
+    attribution: '&copy; OpenStreetMap & Carto'
+}).addTo(map);
 
-        <!-- 6 Cascais (J7 après-midi) -->
-        <g transform="translate(177, 178)" filter="url(#shadow)">
-          <circle r="12" fill="#7c3aed"/>
-          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">6</text>
-        </g>
-        <text x="130" y="173" fill="white" font-size="8.5" font-weight="500">Cascais</text>
-        <text x="130" y="183" fill="rgba(255,255,255,0.6)" font-size="7.5">~45 min A5</text>
+// Liste des lieux
+const places = [
+    {
+        name: 'Paris',
+        desc: 'Début du voyage',
+        coords: [48.8566, 2.3522]
+    },
+    {
+        name: 'Rome',
+        desc: 'Super visite',
+        coords: [41.9028, 12.4964]
+    }
+];
 
-        <!-- Boussole -->
-        <g transform="translate(645, 430)">
-          <circle r="16" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-          <text y="-4" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9" font-weight="700">N</text>
-          <line x1="0" y1="-10" x2="0" y2="10" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-          <line x1="-10" y1="0" x2="10" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-        </g>
+// Icône personnalisée
+const customIcon = L.divIcon({
+    className: '',
+    html: '<div class="custom-marker"></div>',
+    iconSize: [24, 24],
+    iconAnchor: [12, 12]
+});
 
-        <!-- Échelle approximative -->
-        <g transform="translate(30, 450)">
-          <line x1="0" y1="0" x2="60" y2="0" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-          <line x1="0" y1="-4" x2="0" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-          <line x1="60" y1="-4" x2="60" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-          <text x="30" y="-7" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="7.5">≈ 20 km</text>
-        </g>
-      </svg>
-    </div>
+// Ajouter les marqueurs
+const bounds = [];
 
-    <div class="map-legend">
-      <div class="leg"><div class="leg-dot" style="background:#2155a3"></div>🏠 Almada — base</div>
-      <div class="leg"><div class="leg-dot" style="background:#c4622d"></div>Étapes Lisbonne (1, 2, 4)</div>
-      <div class="leg"><div class="leg-dot" style="background:#e07b20"></div>Costa da Caparica (3) — ×4 jours</div>
-      <div class="leg"><div class="leg-dot" style="background:#2d6a4f"></div>Arrábida (5)</div>
-      <div class="leg"><div class="leg-dot" style="background:#7c3aed"></div>Cascais (6)</div>
-    </div>
-  </div>
-</section>
+places.forEach(place => {
+
+    L.marker(place.coords, { icon: customIcon })
+        .addTo(map)
+        .bindPopup(`
+            <div class="popup-title">${place.name}</div>
+            <div class="popup-text">${place.desc}</div>
+        `);
+
+    bounds.push(place.coords);
+});
+
+// Zoom automatique sur tous les lieux
+map.fitBounds(bounds, {
+    padding: [50, 50]
+});
+
+</script>
 
 <!-- PICNIC -->
 <section id="pensebete">
