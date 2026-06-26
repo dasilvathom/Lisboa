@@ -3,128 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lisbonne · Août 2026</title>
+<title>Lisbonne · Août 2025</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --night:#0d1b2a;--night2:#152638;--azul:#2155a3;--azul-light:#4a80d4;
-  --sand:#f0e8d5;--sand2:#faf8f4;--terra:#c4622d;--terra-light:#e8845a;
-  --white:#fff;--text:#1a1a2e;--muted:#6b7280;--green:#2d6a4f;--green-light:#e8f5ee;
+  --night:#0d1b2a;--azul:#2155a3;--azul-l:#4a80d4;
+  --sand:#f0e8d5;--sand2:#faf8f4;--terra:#c4622d;--terra-l:#e8845a;
+  --white:#fff;--text:#1a1a2e;--muted:#6b7280;--green:#2d6a4f;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--sand2);color:var(--text);overflow-x:hidden}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:var(--night)}
-.azulejo-bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(8,1fr);opacity:.15;pointer-events:none}
-.tile{border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
+.hero{position:relative;height:100vh;min-height:580px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:var(--night)}
+.az-bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(8,1fr);opacity:.13;pointer-events:none}
+.tile{border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
 .tile svg{width:55%;height:55%;fill:none;stroke:#4a80d4;stroke-width:1.5}
-.tile:nth-child(4n){animation:tilePulse 5s ease-in-out infinite}
-.tile:nth-child(7n){animation:tilePulse 5s ease-in-out infinite;animation-delay:1.2s}
-.tile:nth-child(11n){animation:tilePulse 5s ease-in-out infinite;animation-delay:2.5s}
-@keyframes tilePulse{0%,100%{background:transparent}50%{background:rgba(65,128,212,.25)}}
-.hero-photo{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1600&q=80');background-size:cover;background-position:center 40%;opacity:.3}
+.tile:nth-child(4n){animation:tp 5s ease-in-out infinite}
+.tile:nth-child(7n){animation:tp 5s ease-in-out 1.2s infinite}
+.tile:nth-child(11n){animation:tp 5s ease-in-out 2.5s infinite}
+@keyframes tp{0%,100%{background:transparent}50%{background:rgba(65,128,212,.22)}}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1600&q=80') center 40%/cover;opacity:.28}
 .hero-content{position:relative;z-index:2;text-align:center;padding:2rem}
-.hero-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.3em;color:var(--terra-light);text-transform:uppercase;margin-bottom:1.5rem}
+.eyebrow-hero{font-size:.72rem;font-weight:600;letter-spacing:.3em;color:var(--terra-l);text-transform:uppercase;margin-bottom:1.5rem}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(4rem,12vw,8rem);font-weight:900;color:#fff;line-height:.85;margin-bottom:1rem}
 .hero-title em{font-style:italic;color:var(--sand)}
-.hero-dates{font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:rgba(255,255,255,.55);margin-bottom:2.5rem}
-.hero-chips{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
-.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85);padding:.35rem .9rem;border-radius:100px;font-size:.75rem;font-weight:500;backdrop-filter:blur(8px)}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.35);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;animation:scrollBounce 2s ease-in-out infinite}
-.scroll-hint::after{content:'';display:block;width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent)}
-@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,.5);margin-bottom:2.5rem}
+.chips{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.82);padding:.35rem .9rem;border-radius:100px;font-size:.75rem;font-weight:500;backdrop-filter:blur(8px)}
+.scroll-hint{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.3);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;animation:sb 2s ease-in-out infinite}
+.scroll-hint::after{content:'';display:block;width:1px;height:34px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent)}
+@keyframes sb{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:52px}
-.nav-brand{font-family:'Playfair Display',serif;font-style:italic;color:var(--sand);font-size:.95rem;font-weight:700;white-space:nowrap}
-.nav-links{display:flex;gap:.2rem;list-style:none;overflow-x:auto;scrollbar-width:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:50px}
+.nav-brand{font-family:'Playfair Display',serif;font-style:italic;color:var(--sand);font-size:.9rem;font-weight:700;white-space:nowrap}
+.nav-links{display:flex;gap:.15rem;list-style:none;overflow-x:auto;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
-.nav-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.7rem;font-weight:500;letter-spacing:.04em;padding:.3rem .55rem;border-radius:4px;transition:all .2s;white-space:nowrap}
+.nav-links a{color:rgba(255,255,255,.42);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.04em;padding:.28rem .5rem;border-radius:4px;transition:all .2s;white-space:nowrap}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
 
-/* SECTION */
-.section-intro{padding:4.5rem 2rem 0;max-width:1100px;margin:0 auto}
-.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--terra);margin-bottom:.6rem}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--night);line-height:1.1;margin-bottom:2.5rem}
+/* SECTION INTRO */
+.s-intro{padding:4.5rem 2rem 0;max-width:1100px;margin:0 auto}
+.eyebrow{font-size:.67rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);margin-bottom:.55rem}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;color:var(--night);line-height:1.1;margin-bottom:2.5rem}
 
 /* DAY CARDS */
 #programme{padding-bottom:2rem}
-.day-card{max-width:1100px;margin:0 auto 2.5rem;padding:0 2rem;opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease}
-.day-card.visible{opacity:1;transform:translateY(0)}
-.day-inner{border-radius:18px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.09);display:grid;grid-template-columns:1fr 1fr}
-@media(max-width:680px){.day-inner{grid-template-columns:1fr}.day-photo{height:240px}}
+.day{max-width:1100px;margin:0 auto 2.2rem;padding:0 2rem;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.day.vis{opacity:1;transform:translateY(0)}
+.day-inner{border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.09);display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:660px){.day-inner{grid-template-columns:1fr}.photo-wrap{height:220px;min-height:unset}}
 
-.day-photo{position:relative;min-height:300px;overflow:hidden;background:#1a2a3a}
-.day-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
-.day-card:hover .day-photo img{transform:scale(1.05)}
-.photo-overlay{position:absolute;inset:0;background:linear-gradient(140deg,rgba(13,27,42,.55) 0%,transparent 55%)}
-.day-num{position:absolute;top:1.1rem;left:1.1rem;font-family:'Playfair Display',serif;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(13,27,42,.55);padding:.28rem .7rem;border-radius:100px;backdrop-filter:blur(6px)}
-.badges{position:absolute;bottom:1.1rem;left:1.1rem;display:flex;gap:.4rem;flex-wrap:wrap}
-.badge{font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.22rem .55rem;border-radius:100px;backdrop-filter:blur(6px)}
-.b-picnic{background:rgba(45,106,79,.85);color:#b7f5d4}
-.b-warn{background:rgba(196,98,45,.85);color:#ffe4d4}
-.b-city{background:rgba(33,85,163,.85);color:#d4e8ff}
-.b-depart{background:rgba(100,100,100,.7);color:#eee}
+/* PHOTO */
+.photo-wrap{position:relative;min-height:290px;overflow:hidden;background:#1a2a3a}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.day:hover .photo-wrap img{transform:scale(1.05)}
+.photo-overlay{position:absolute;inset:0;background:linear-gradient(140deg,rgba(13,27,42,.5) 0%,transparent 55%)}
+.day-num{position:absolute;top:1rem;left:1rem;font-family:'Playfair Display',serif;font-size:.62rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:rgba(255,255,255,.9);background:rgba(13,27,42,.52);padding:.25rem .65rem;border-radius:100px;backdrop-filter:blur(6px)}
+.badges{position:absolute;bottom:1rem;left:1rem;display:flex;gap:.35rem;flex-wrap:wrap}
+.badge{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .5rem;border-radius:100px;backdrop-filter:blur(6px)}
+.bp{background:rgba(45,106,79,.85);color:#b7f5d4}
+.bw{background:rgba(196,98,45,.85);color:#ffe4d4}
+.bc{background:rgba(33,85,163,.85);color:#d4e8ff}
+.bd{background:rgba(80,80,80,.7);color:#eee}
 
-.day-content{background:#fff;padding:1.75rem 1.75rem;display:flex;flex-direction:column;justify-content:center}
-.day-date{font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:.4rem}
-.day-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--night);line-height:1.2;margin-bottom:1.1rem}
-.items{list-style:none;display:flex;flex-direction:column;gap:.65rem}
-.item{display:grid;grid-template-columns:52px 1fr;gap:.65rem;align-items:start}
-.itime{font-size:.63rem;font-weight:700;color:var(--azul);letter-spacing:.04em;text-transform:uppercase;padding-top:.18rem;line-height:1.3}
-.itext{font-size:.85rem;line-height:1.55;color:#374151}
-.itext b{color:var(--night);font-weight:600}
-.itext .warn{color:var(--terra);font-weight:600}
+/* CONTENT */
+.day-body{background:#fff;padding:1.6rem;display:flex;flex-direction:column;justify-content:center}
+.day-date{font-size:.64rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--terra);margin-bottom:.4rem}
+.day-title{font-family:'Playfair Display',serif;font-size:1.28rem;font-weight:700;color:var(--night);line-height:1.2;margin-bottom:1rem}
+.items{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.item{display:grid;grid-template-columns:50px 1fr;gap:.6rem;align-items:start}
+.it{font-size:.61rem;font-weight:700;color:var(--azul);letter-spacing:.04em;text-transform:uppercase;padding-top:.16rem;line-height:1.3}
+.tx{font-size:.83rem;line-height:1.55;color:#374151}
+.tx b{color:var(--night);font-weight:600}
+.tx .w{color:var(--terra);font-weight:600}
 
 /* MAP */
-#carte{background:var(--night);padding:5rem 2rem 4rem}
-#carte .eyebrow{color:var(--terra-light)}
-#carte .section-title{color:#fff;margin-bottom:1.75rem}
-.map-container{max-width:1100px;margin:0 auto}
-.map-frame{border-radius:18px;overflow:hidden;box-shadow:0 16px 56px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.07)}
-.map-frame iframe{width:100%;height:500px;border:none;display:block}
-.map-pins{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
-.pin{display:flex;align-items:center;gap:.45rem;color:rgba(255,255,255,.55);font-size:.75rem}
-.pin-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+#carte{background:var(--night);padding:4.5rem 2rem 3.5rem}
+#carte .eyebrow{color:var(--terra-l)}
+#carte .s-title{color:#fff;margin-bottom:1.5rem}
+.map-wrap{max-width:1100px;margin:0 auto}
+.map-svg-wrap{background:#162336;border-radius:16px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06);padding:1.5rem}
+svg#map{width:100%;height:auto;display:block;font-family:'Inter',sans-serif}
+.map-legend{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.leg{display:flex;align-items:center;gap:.4rem;color:rgba(255,255,255,.5);font-size:.72rem}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 
 /* PICNIC */
-#pensebete{padding:5rem 2rem;background:var(--sand)}
-.reminders{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem}
-.reminder{background:#fff;border-radius:14px;padding:1.4rem;box-shadow:0 2px 14px rgba(0,0,0,.07);border-left:4px solid var(--green)}
-.reminder.urgent{border-left-color:var(--terra)}
-.r-icon{font-size:1.4rem;margin-bottom:.35rem}
-.r-day{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.35rem}
-.reminder.urgent .r-day{color:var(--terra)}
-.r-text{font-size:.84rem;line-height:1.55;color:#374151}
-.r-text b{color:var(--night)}
+#pensebete{padding:4.5rem 2rem;background:var(--sand)}
+.reminders{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.rem{background:#fff;border-radius:14px;padding:1.3rem;box-shadow:0 2px 12px rgba(0,0,0,.07);border-left:4px solid var(--green)}
+.rem.urg{border-left-color:var(--terra)}
+.rem-icon{font-size:1.3rem;margin-bottom:.3rem}
+.rem-day{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.3rem}
+.rem.urg .rem-day{color:var(--terra)}
+.rem-text{font-size:.82rem;line-height:1.55;color:#374151}
+.rem-text b{color:var(--night)}
 
 /* RESA */
-#reservations{padding:4rem 2rem 5rem;background:var(--sand2)}
-.resas{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
-.resa{background:#fff;border-radius:14px;padding:1.4rem;box-shadow:0 2px 14px rgba(0,0,0,.07);border-top:3px solid var(--azul)}
-.resa-icon{font-size:1.5rem;margin-bottom:.35rem}
-.resa-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--night);margin-bottom:.3rem}
-.resa-detail{font-size:.82rem;color:var(--muted);line-height:1.55}
+#reservations{padding:3.5rem 2rem 4.5rem;background:var(--sand2)}
+.resas{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.resa{background:#fff;border-radius:14px;padding:1.3rem;box-shadow:0 2px 12px rgba(0,0,0,.07);border-top:3px solid var(--azul)}
+.resa-icon{font-size:1.4rem;margin-bottom:.3rem}
+.resa-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--night);margin-bottom:.25rem}
+.resa-detail{font-size:.8rem;color:var(--muted);line-height:1.5}
 .resa-detail b{color:var(--night)}
 
 /* FOOTER */
-footer{background:var(--night);text-align:center;padding:3rem 2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.35)}
-footer span{color:var(--terra-light)}
+footer{background:var(--night);text-align:center;padding:2.5rem 2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.3)}
+footer span{color:var(--terra-l)}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="azulejo-bg" id="azulejo"></div>
-  <div class="hero-photo"></div>
+  <div class="az-bg" id="azulejo"></div>
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Mon programme de voyage</p>
+    <p class="eyebrow-hero">Mon programme de voyage</p>
     <h1 class="hero-title">Lis<em>bonne</em></h1>
-    <p class="hero-dates">8 — 15 août 2026 &nbsp;·&nbsp; Almada</p>
-    <div class="hero-chips">
+    <p class="hero-sub">8 — 15 août 2025 &nbsp;·&nbsp; Almada</p>
+    <div class="chips">
       <span class="chip">🏖 4 jours de plage</span>
       <span class="chip">🐠 Océanarium</span>
       <span class="chip">🌊 Arrábida</span>
@@ -148,262 +150,372 @@ footer span{color:var(--terra-light)}
 
 <!-- PROGRAMME -->
 <section id="programme">
-  <div class="section-intro">
+  <div class="s-intro">
     <p class="eyebrow">Jour par jour</p>
-    <h2 class="section-title">Le programme complet</h2>
+    <h2 class="s-title">Le programme complet</h2>
   </div>
 
-  <!-- J1 -->
-  <div class="day-card">
+  <!-- J1 - Time Out Market -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80&fit=crop" alt="Time Out Market Lisbonne" loading="lazy">
+      <div class="photo-wrap">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85&fit=crop&crop=center" alt="Time Out Market Lisbonne" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 1</div>
-        <div class="badges"><span class="badge b-city">Arrivée</span></div>
+        <div class="badges"><span class="badge bc">Arrivée</span></div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Samedi 8 août</p>
         <h3 class="day-title">Arrivée à Lisbonne</h3>
         <ul class="items">
-          <li class="item"><span class="itime">22h00</span><span class="itext">Arrivée à Almada — installation dans l'appartement</span></li>
-          <li class="item"><span class="itime">Soir</span><span class="itext">Dîner au <b>Time Out Market</b> ou resto proche de l'appart</span></li>
-          <li class="item"><span class="itime"></span><span class="itext">Pas de courses ce soir — repos mérité 🛌</span></li>
+          <li class="item"><span class="it">22h00</span><span class="tx">Arrivée à Almada — installation</span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner au <b>Time Out Market</b> ou resto proche</span></li>
+          <li class="item"><span class="it"></span><span class="tx">Pas de courses ce soir — repos 🛌</span></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- J2 -->
-  <div class="day-card">
+  <!-- J2 - Pasteis + LX Factory -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80&fit=crop" alt="Pastéis de Belém et LX Factory" loading="lazy">
+      <div class="photo-wrap">
+        <!-- Pastel de nata gros plan -->
+        <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=800&q=85&fit=crop&crop=center" alt="Pastéis de Belém" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 2</div>
-        <div class="badges"><span class="badge b-city">Lisbonne</span></div>
+        <div class="badges"><span class="badge bc">Lisbonne</span></div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Dimanche 9 août</p>
         <h3 class="day-title">Courses · Belém · LX Factory</h3>
         <ul class="items">
-          <li class="item"><span class="itime">Matin</span><span class="itext">Courses au supermarché pour la semaine</span></li>
-          <li class="item"><span class="itime">Matinée</span><span class="itext"><b>Pastéis de Belém</b> — la maison mère depuis 1837, arriver tôt</span></li>
-          <li class="item"><span class="itime">Après-midi</span><span class="itext"><b>LX Factory</b> — marché du dimanche (artisans, créateurs, producteurs)</span></li>
-          <li class="item"><span class="itime">Soir</span><span class="itext">Dîner sur place ou dans le quartier de Belém</span></li>
+          <li class="item"><span class="it">Matin</span><span class="tx">Courses au supermarché pour la semaine</span></li>
+          <li class="item"><span class="it">Matinée</span><span class="tx"><b>Pastéis de Belém</b> — la maison mère depuis 1837, arriver tôt</span></li>
+          <li class="item"><span class="it">Après-midi</span><span class="tx"><b>LX Factory</b> — marché du dimanche (artisans, créateurs)</span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner sur place ou dans le quartier</span></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- J3 -->
-  <div class="day-card">
+  <!-- J3 - Caparica -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&fit=crop&crop=center" alt="Costa da Caparica" loading="lazy">
+      <div class="photo-wrap">
+        <!-- Costa da Caparica vraie plage avec vagues -->
+        <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=85&fit=crop&crop=bottom" alt="Costa da Caparica" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 3</div>
-        <div class="badges"><span class="badge b-picnic">🧺 Pique-nique</span></div>
+        <div class="badges"><span class="badge bp">🧺 Pique-nique</span></div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Lundi 10 août</p>
         <h3 class="day-title">Costa da Caparica</h3>
         <ul class="items">
-          <li class="item"><span class="itime">Matin</span><span class="itext">Départ tôt en voiture — <span class="warn">parking vite plein en août !</span></span></li>
-          <li class="item"><span class="itime">Journée</span><span class="itext">Plage à <b>Costa da Caparica</b> — pique-nique sur place</span></li>
-          <li class="item"><span class="itime">Retour</span><span class="itext">Retour Almada — douche et changement</span></li>
-          <li class="item"><span class="itime">Soir</span><span class="itext">Dîner à <b>Cacilhas</b> — fruits de mer avec vue sur Lisbonne illuminée</span></li>
+          <li class="item"><span class="it">Matin</span><span class="tx">Départ tôt — <span class="w">parking vite plein en août !</span></span></li>
+          <li class="item"><span class="it">Journée</span><span class="tx">Plage à <b>Costa da Caparica</b>, pique-nique</span></li>
+          <li class="item"><span class="it">Retour</span><span class="tx">Almada — douche et changement</span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner à <b>Cacilhas</b> — fruits de mer face à Lisbonne</span></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- J4 -->
-  <div class="day-card">
+  <!-- J4 - Oceanarium + Colombo + Mercado -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80&fit=crop" alt="Océanarium de Lisbonne" loading="lazy">
+      <div class="photo-wrap">
+        <!-- Aquarium vue avec poissons -->
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85&fit=crop&crop=center" alt="Océanarium de Lisbonne" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 4</div>
-        <div class="badges"><span class="badge b-city">Lisbonne</span></div>
+        <div class="badges"><span class="badge bc">Lisbonne</span></div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Mardi 11 août</p>
-        <h3 class="day-title">Océanarium · Colombo · Mercado da Ribeira</h3>
+        <h3 class="day-title">Océanarium · Colombo · Mercado</h3>
         <ul class="items">
-          <li class="item"><span class="itime">Matin</span><span class="itext"><b>Océanarium de Lisbonne</b> (Parque das Nações) — prévoir 2h</span></li>
-          <li class="item"><span class="itime"></span><span class="itext"><span class="warn">⚠ Réserver en ligne à l'avance sur oceanario.pt</span></span></li>
-          <li class="item"><span class="itime">Retour</span><span class="itext">Retour Almada — douche et changement</span></li>
-          <li class="item"><span class="itime">Après-midi</span><span class="itext">Shopping au <b>Colombo</b> (ouvert jusqu'à minuit)</span></li>
-          <li class="item"><span class="itime">Soir</span><span class="itext">Dîner au <b>Mercado da Ribeira</b> — goûter plusieurs stands</span></li>
+          <li class="item"><span class="it">Matin</span><span class="tx"><b>Océanarium</b> (Parque das Nações) — 2h</span></li>
+          <li class="item"><span class="it"></span><span class="tx"><span class="w">⚠ Réserver sur oceanario.pt</span></span></li>
+          <li class="item"><span class="it">Retour</span><span class="tx">Almada — douche et changement</span></li>
+          <li class="item"><span class="it">Après-midi</span><span class="tx">Shopping au <b>Colombo</b></span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner au <b>Mercado da Ribeira</b></span></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- J5 -->
-  <div class="day-card">
+  <!-- J5 - Caparica 2 -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=80&fit=crop" alt="Costa da Caparica vagues" loading="lazy">
+      <div class="photo-wrap">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85&fit=crop&crop=center" alt="Plage atlantique" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 5</div>
-        <div class="badges"><span class="badge b-picnic">🧺 Pique-nique</span></div>
+        <div class="badges"><span class="badge bp">🧺 Pique-nique</span></div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Mercredi 12 août</p>
         <h3 class="day-title">Costa da Caparica</h3>
         <ul class="items">
-          <li class="item"><span class="itime">Journée</span><span class="itext">Plage à <b>Caparica</b> — explorer une section différente (30 km de côte, chaque numéro a son ambiance)</span></li>
-          <li class="item"><span class="itime">Retour</span><span class="itext">Retour Almada — douche et changement</span></li>
-          <li class="item"><span class="itime">Soir</span><span class="itext">Dîner à Almada ou Lisbonne</span></li>
+          <li class="item"><span class="it">Journée</span><span class="tx"><b>Caparica</b> — tester une autre section (30 km de côte)</span></li>
+          <li class="item"><span class="it">Retour</span><span class="tx">Almada — douche et changement</span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner à Almada ou Lisbonne</span></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- J6 -->
-  <div class="day-card">
+  <!-- J6 - Arrabida -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80&fit=crop" alt="Arrábida eau turquoise" loading="lazy">
+      <div class="photo-wrap">
+        <!-- Arrabida eau turquoise falaises -->
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=85&fit=crop&crop=center" alt="Arrábida eau turquoise" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 6</div>
         <div class="badges">
-          <span class="badge b-picnic">🧺 Pique-nique</span>
-          <span class="badge b-warn">⚠ Départ tôt</span>
+          <span class="badge bp">🧺 Pique-nique</span>
+          <span class="badge bw">⚠ 7h30</span>
         </div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Jeudi 13 août</p>
         <h3 class="day-title">Arrábida — La claque</h3>
         <ul class="items">
-          <li class="item"><span class="itime">7h30</span><span class="itext">Départ depuis Almada — ~45 min de route</span></li>
-          <li class="item"><span class="itime"></span><span class="itext"><span class="warn">⚠ Réserver le créneau d'accès en ligne (quota journalier) — indispensable !</span></span></li>
-          <li class="item"><span class="itime">Journée</span><span class="itext"><b>Praia do Portinho da Arrábida</b> — eau turquoise, falaises blanches, parc naturel protégé</span></li>
-          <li class="item"><span class="itime">Retour</span><span class="itext">Retour Almada — douche et changement</span></li>
-          <li class="item"><span class="itime">Soir</span><span class="itext">Dîner à <b>Almada ou Cacilhas</b></span></li>
+          <li class="item"><span class="it">7h30</span><span class="tx">Départ Almada → ~45 min</span></li>
+          <li class="item"><span class="it"></span><span class="tx"><span class="w">⚠ Réserver créneau d'accès (quota journalier !)</span></span></li>
+          <li class="item"><span class="it">Journée</span><span class="tx"><b>Praia do Portinho da Arrábida</b> — eau turquoise, falaises blanches</span></li>
+          <li class="item"><span class="it">Retour</span><span class="tx">Almada — douche et changement</span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner à <b>Almada ou Cacilhas</b></span></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- J7 -->
-  <div class="day-card">
+  <!-- J7 - Caparica + Cascais -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop" alt="Cascais Portugal" loading="lazy">
+      <div class="photo-wrap">
+        <!-- Cascais village bord de mer -->
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&fit=crop&crop=center" alt="Cascais Portugal" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 7</div>
-        <div class="badges"><span class="badge b-picnic">🧺 Pique-nique</span></div>
+        <div class="badges"><span class="badge bp">🧺 Pique-nique</span></div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Vendredi 14 août</p>
         <h3 class="day-title">Caparica · Cascais</h3>
         <ul class="items">
-          <li class="item"><span class="itime">Matin</span><span class="itext">Dernière matinée plage à <b>Caparica</b> — partir vers 12h30</span></li>
-          <li class="item"><span class="itime">Retour</span><span class="itext">Retour Almada — douche et changement</span></li>
-          <li class="item"><span class="itime">Après-midi</span><span class="itext">Route vers <b>Cascais</b> (~45 min via A5) — balade dans le village balnéaire, front de mer</span></li>
-          <li class="item"><span class="itime">Soir</span><span class="itext">Dîner à Cascais — dernière soirée 🌅</span></li>
+          <li class="item"><span class="it">Matin</span><span class="tx"><b>Caparica</b> — dernière matinée, partir à 12h30</span></li>
+          <li class="item"><span class="it">Retour</span><span class="tx">Almada — douche et changement</span></li>
+          <li class="item"><span class="it">Après-midi</span><span class="tx">Route vers <b>Cascais</b> (~45 min via A5), balade</span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner à Cascais — dernière soirée 🌅</span></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- J8 -->
-  <div class="day-card">
+  <!-- J8 - Depart -->
+  <div class="day">
     <div class="day-inner">
-      <div class="day-photo">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt="Vue sur le Tage Cacilhas" loading="lazy">
+      <div class="photo-wrap">
+        <!-- Vue panoramique Lisbonne depuis Almada -->
+        <img src="https://images.unsplash.com/photo-1612459284270-0c0cde09a35c?w=800&q=85&fit=crop&crop=center" alt="Vue sur le Tage" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 8</div>
-        <div class="badges"><span class="badge b-depart">Départ</span></div>
+        <div class="badges"><span class="badge bd">Départ</span></div>
       </div>
-      <div class="day-content">
+      <div class="day-body">
         <p class="day-date">Samedi 15 août</p>
         <h3 class="day-title">Au revoir Lisbonne</h3>
         <ul class="items">
-          <li class="item"><span class="itime">Matin</span><span class="itext">Café à <b>Cacilhas</b> avec vue sur le Tage et le Cristo Rei</span></li>
-          <li class="item"><span class="itime">Midi</span><span class="itext">Départ ✈ — bon retour !</span></li>
+          <li class="item"><span class="it">Matin</span><span class="tx">Café à <b>Cacilhas</b> — vue sur le Tage et le Cristo Rei</span></li>
+          <li class="item"><span class="it">Midi</span><span class="tx">Départ ✈ — bon retour !</span></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTE -->
+<!-- CARTE SVG simple -->
 <section id="carte">
-  <div class="section-intro" style="padding-top:0;margin-bottom:1.75rem">
-    <p class="eyebrow" style="color:var(--terra-light)">Tous les spots</p>
-    <h2 class="section-title" style="color:#fff">La carte interactive</h2>
+  <div class="s-intro" style="padding-top:0;margin-bottom:1.5rem">
+    <p class="eyebrow" style="color:var(--terra-l)">Repères géographiques</p>
+    <h2 class="s-title" style="color:#fff">La carte des étapes</h2>
   </div>
-  <div class="map-container">
-    <div class="map-frame">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d198942.31!2d-9.29!3d38.61!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e0!4m5!1s0xd19340f4a3ccff5%3A0x400eef17f209660!2sAlmada%2C+Portugal!3m2!1d38.6768!2d-9.1572!4m5!1s0xd1903fd8f00aef7%3A0xba4a7e2e7f38ff06!2sPast%C3%A9is+de+Bel%C3%A9m%2C+Rua+de+Bel%C3%A9m+84+92%2C+1300-085+Lisboa!3m2!1d38.6975!2d-9.2032!4m5!1s0xd190329f9adfe89%3A0xd7a0af3db82d08c5!2sLX+Factory%2C+1300-372+Lisboa!3m2!1d38.7035!2d-9.1788!4m5!1s0xd19316b980604f7%3A0x3f0c9a3f6f12a7d3!2sOce%C3%A2nario+de+Lisboa%2C+Esplanada+Dom+Carlos+I%2C+1990-005+Lisboa!3m2!1d38.7635!2d-9.0937!4m5!1s0xd19340f4a3ccff5%3A0x400eef17f209660!2sCosta+da+Caparica%2C+Almada!3m2!1d38.6396!2d-9.2302!4m5!1s0xd1940c96bfe8f3f%3A0xae9a7c6dd4db26bc!2sPraia+do+Portinho+da+Arr%C3%A1bida%2C+Set%C3%BAbal!3m2!1d38.4801!2d-8.9785!4m5!1s0xd1ece1c1ca027e3%3A0x9e4f7d5f3c6b4a3d!2sCascais%2C+Portugal!3m2!1d38.6979!2d-9.4215!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Carte Lisbonne & région — Août 2025">
-      </iframe>
+  <div class="map-wrap">
+    <div class="map-svg-wrap">
+      <svg id="map" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/>
+          </filter>
+        </defs>
+
+        <!-- Fond mer / Atlantique -->
+        <rect width="700" height="480" fill="#0d1f35" rx="8"/>
+
+        <!-- Terre (Portugal simplifié dans la zone) -->
+        <!-- Zone principale terre -->
+        <path d="M 200 0 L 700 0 L 700 480 L 280 480 L 240 420 L 200 380 L 180 320 L 190 260 L 210 200 L 200 140 L 200 0 Z"
+              fill="#1e3a28" opacity="0.85"/>
+
+        <!-- Péninsule de Setúbal / Arrábida vers le sud -->
+        <path d="M 280 480 L 260 440 L 240 420 L 230 400 L 250 390 L 280 395 L 310 410 L 330 440 L 320 480 Z"
+              fill="#1e3a28" opacity="0.85"/>
+
+        <!-- Estuaire du Tage (bleu) -->
+        <path d="M 310 165 L 370 170 L 400 190 L 410 215 L 390 235 L 350 240 L 310 230 L 295 210 L 300 185 Z"
+              fill="#0d3358" opacity="0.9"/>
+        <!-- Label Tage -->
+        <text x="352" y="205" fill="rgba(100,160,220,0.7)" font-size="9" text-anchor="middle" font-style="italic">Rio Tejo</text>
+
+        <!-- Océan Atlantique label -->
+        <text x="90" y="240" fill="rgba(100,160,220,0.45)" font-size="12" text-anchor="middle" font-style="italic" transform="rotate(-15, 90, 240)">Atlantique</text>
+
+        <!-- Routes principales (tirets) -->
+        <!-- A5 vers Cascais -->
+        <line x1="330" y1="195" x2="175" y2="178" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
+        <!-- Route vers Arrábida -->
+        <line x1="330" y1="230" x2="340" y2="370" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
+        <!-- Route vers Parque das Nações -->
+        <line x1="370" y1="185" x2="490" y2="170" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
+
+        <!-- ========= MARQUEURS ========= -->
+
+        <!-- 🏠 Almada / Base (étoile) -->
+        <g transform="translate(330, 222)" filter="url(#shadow)">
+          <circle r="14" fill="#2155a3" opacity="0.95"/>
+          <text y="5" text-anchor="middle" fill="white" font-size="13">🏠</text>
+        </g>
+        <text x="330" y="248" text-anchor="middle" fill="white" font-size="9" font-weight="600">Almada</text>
+        <text x="330" y="259" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="7.5">Base</text>
+
+        <!-- 1 Time Out Market (J1) — Lisbonne centre -->
+        <g transform="translate(355, 188)" filter="url(#shadow)">
+          <circle r="12" fill="#c4622d"/>
+          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">1</text>
+        </g>
+        <text x="390" y="183" fill="white" font-size="8.5" font-weight="500">Time Out</text>
+        <text x="390" y="193" fill="white" font-size="8.5" font-weight="500">Market</text>
+
+        <!-- 2 Belém + LX Factory (J2) -->
+        <g transform="translate(310, 195)" filter="url(#shadow)">
+          <circle r="12" fill="#c4622d"/>
+          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">2</text>
+        </g>
+        <text x="245" y="190" fill="white" font-size="8.5" font-weight="500">Belém /</text>
+        <text x="245" y="200" fill="white" font-size="8.5" font-weight="500">LX Factory</text>
+
+        <!-- 3 Costa da Caparica (J3, J5, J7 matin) -->
+        <g transform="translate(262, 282)" filter="url(#shadow)">
+          <circle r="14" fill="#e07b20"/>
+          <text y="5" text-anchor="middle" fill="white" font-size="11" font-weight="700">3</text>
+        </g>
+        <text x="216" y="278" fill="white" font-size="8.5" font-weight="500">Costa da</text>
+        <text x="216" y="288" fill="white" font-size="8.5" font-weight="500">Caparica</text>
+        <text x="216" y="298" fill="rgba(255,255,255,0.6)" font-size="7">×4 jours</text>
+
+        <!-- 4 Océanarium (J4) -->
+        <g transform="translate(490, 168)" filter="url(#shadow)">
+          <circle r="12" fill="#c4622d"/>
+          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">4</text>
+        </g>
+        <text x="508" y="163" fill="white" font-size="8.5" font-weight="500">Océanarium</text>
+        <text x="508" y="173" fill="rgba(255,255,255,0.6)" font-size="7.5">Parque Nações</text>
+
+        <!-- 5 Arrábida (J6) -->
+        <g transform="translate(340, 378)" filter="url(#shadow)">
+          <circle r="13" fill="#2d6a4f"/>
+          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">5</text>
+        </g>
+        <text x="362" y="373" fill="white" font-size="8.5" font-weight="500">Arrábida</text>
+        <text x="362" y="383" fill="rgba(255,255,255,0.6)" font-size="7.5">Parc naturel</text>
+
+        <!-- 6 Cascais (J7 après-midi) -->
+        <g transform="translate(177, 178)" filter="url(#shadow)">
+          <circle r="12" fill="#7c3aed"/>
+          <text y="4" text-anchor="middle" fill="white" font-size="11" font-weight="700">6</text>
+        </g>
+        <text x="130" y="173" fill="white" font-size="8.5" font-weight="500">Cascais</text>
+        <text x="130" y="183" fill="rgba(255,255,255,0.6)" font-size="7.5">~45 min A5</text>
+
+        <!-- Boussole -->
+        <g transform="translate(645, 430)">
+          <circle r="16" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <text y="-4" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9" font-weight="700">N</text>
+          <line x1="0" y1="-10" x2="0" y2="10" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="-10" y1="0" x2="10" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        </g>
+
+        <!-- Échelle approximative -->
+        <g transform="translate(30, 450)">
+          <line x1="0" y1="0" x2="60" y2="0" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="60" y1="-4" x2="60" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <text x="30" y="-7" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="7.5">≈ 20 km</text>
+        </g>
+      </svg>
     </div>
-    <div class="map-pins">
-      <div class="pin"><div class="pin-dot" style="background:#2155a3"></div>Almada (base)</div>
-      <div class="pin"><div class="pin-dot" style="background:#c4622d"></div>Costa da Caparica (×4)</div>
-      <div class="pin"><div class="pin-dot" style="background:#4a80d4"></div>Belém + LX Factory</div>
-      <div class="pin"><div class="pin-dot" style="background:#4a80d4"></div>Océanarium</div>
-      <div class="pin"><div class="pin-dot" style="background:#2d6a4f"></div>Arrábida</div>
-      <div class="pin"><div class="pin-dot" style="background:#7c3aed"></div>Cascais</div>
+
+    <div class="map-legend">
+      <div class="leg"><div class="leg-dot" style="background:#2155a3"></div>🏠 Almada — base</div>
+      <div class="leg"><div class="leg-dot" style="background:#c4622d"></div>Étapes Lisbonne (1, 2, 4)</div>
+      <div class="leg"><div class="leg-dot" style="background:#e07b20"></div>Costa da Caparica (3) — ×4 jours</div>
+      <div class="leg"><div class="leg-dot" style="background:#2d6a4f"></div>Arrábida (5)</div>
+      <div class="leg"><div class="leg-dot" style="background:#7c3aed"></div>Cascais (6)</div>
     </div>
   </div>
 </section>
 
 <!-- PICNIC -->
 <section id="pensebete">
-  <div class="section-intro" style="padding-top:0;margin-bottom:1.75rem">
+  <div class="s-intro" style="padding-top:0;margin-bottom:1.5rem">
     <p class="eyebrow">Ne pas oublier</p>
-    <h2 class="section-title">🧺 Pense-bêtes pique-nique</h2>
+    <h2 class="s-title">🧺 Pense-bêtes pique-nique</h2>
   </div>
   <div class="reminders">
-    <div class="reminder">
-      <div class="r-icon">🏖</div>
-      <p class="r-day">Lundi 10 — Caparica</p>
-      <p class="r-text">Préparer le matin avant de partir. Tu as fait les courses le dimanche — tout est là.</p>
+    <div class="rem">
+      <div class="rem-icon">🏖</div>
+      <p class="rem-day">Lundi 10 — Caparica</p>
+      <p class="rem-text">Préparer le matin. Tu as fait les courses le dimanche — tout est là.</p>
     </div>
-    <div class="reminder">
-      <div class="r-icon">🌊</div>
-      <p class="r-day">Mercredi 12 — Caparica</p>
-      <p class="r-text">Préparer le matin. Tu as le mardi pour faire des courses complémentaires si besoin.</p>
+    <div class="rem">
+      <div class="rem-icon">🌊</div>
+      <p class="rem-day">Mercredi 12 — Caparica</p>
+      <p class="rem-text">Préparer le matin. Penser à refaire les courses si besoin le mardi.</p>
     </div>
-    <div class="reminder urgent">
-      <div class="r-icon">⚠️</div>
-      <p class="r-day">Jeudi 13 — Arrábida · PRIORITÉ</p>
-      <p class="r-text">Préparer <b>le mercredi soir</b>. Départ à 7h30 — pas le temps le matin. Prévoir beaucoup à boire, aucun commerce à proximité de la plage.</p>
+    <div class="rem urg">
+      <div class="rem-icon">⚠️</div>
+      <p class="rem-day">Jeudi 13 — Arrábida · PRIORITÉ</p>
+      <p class="rem-text">Préparer <b>le mercredi soir</b>. Départ 7h30 — pas le temps le matin. Prévoir beaucoup à boire, aucun commerce sur place.</p>
     </div>
-    <div class="reminder">
-      <div class="r-icon">🛍</div>
-      <p class="r-day">Vendredi 14 — Caparica</p>
-      <p class="r-text">Repas léger suffit — tu quittes la plage à 12h30 et tu dînes à Cascais le soir.</p>
+    <div class="rem">
+      <div class="rem-icon">🛍</div>
+      <p class="rem-day">Vendredi 14 — Caparica</p>
+      <p class="rem-text">Repas léger — tu quittes la plage à 12h30 et dînes à Cascais.</p>
     </div>
   </div>
 </section>
 
 <!-- RÉSERVATIONS -->
 <section id="reservations">
-  <div class="section-intro" style="padding-top:0;margin-bottom:1.75rem">
+  <div class="s-intro" style="padding-top:0;margin-bottom:1.5rem">
     <p class="eyebrow">Avant de partir</p>
-    <h2 class="section-title">📋 Réservations obligatoires</h2>
+    <h2 class="s-title">📋 Réservations obligatoires</h2>
   </div>
   <div class="resas">
     <div class="resa">
       <div class="resa-icon">🐠</div>
       <p class="resa-name">Océanarium de Lisbonne</p>
-      <p class="resa-detail">Réserver en ligne sur <b>oceanario.pt</b> — très fréquenté en août, les créneaux partent vite.</p>
+      <p class="resa-detail">Réserver sur <b>oceanario.pt</b> — très fréquenté en août.</p>
     </div>
     <div class="resa">
       <div class="resa-icon">🌿</div>
       <p class="resa-name">Accès Arrábida</p>
-      <p class="resa-detail">Réserver le créneau horaire sur le <b>site du Parc Naturel de l'Arrábida</b>. Quota journalier en été — sans ça, pas d'accès en voiture.</p>
+      <p class="resa-detail">Créneau horaire sur le <b>site du Parc Naturel de l'Arrábida</b>. Sans réservation, pas d'accès en voiture en été.</p>
     </div>
   </div>
 </section>
@@ -418,8 +530,8 @@ const svgs = [
   `<svg viewBox="0 0 40 40"><polygon points="20,4 36,36 4,36"/></svg>`,
   `<svg viewBox="0 0 40 40"><rect x="8" y="8" width="24" height="24" rx="2"/><rect x="15" y="15" width="10" height="10" rx="1"/></svg>`,
   `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="7"/><circle cx="20" cy="20" r="14"/></svg>`,
-  `<svg viewBox="0 0 40 40"><line x1="4" y1="4" x2="36" y2="36"/><line x1="36" y1="4" x2="4" y2="36"/><circle cx="20" cy="20" r="8"/></svg>`,
   `<svg viewBox="0 0 40 40"><path d="M20 4 L36 20 L20 36 L4 20 Z"/></svg>`,
+  `<svg viewBox="0 0 40 40"><line x1="4" y1="4" x2="36" y2="36"/><line x1="36" y1="4" x2="4" y2="36"/><circle cx="20" cy="20" r="8"/></svg>`,
 ];
 for(let i=0;i<80;i++){
   const t=document.createElement('div');
@@ -429,13 +541,10 @@ for(let i=0;i<80;i++){
 }
 
 // Scroll reveal
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
-  });
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
 },{threshold:0.08});
-document.querySelectorAll('.day-card').forEach(c=>obs.observe(c));
+document.querySelectorAll('.day').forEach(c=>obs.observe(c));
 </script>
 </body>
 </html>
-
