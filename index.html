@@ -214,7 +214,7 @@ footer span{color:var(--terra-l)}
     <div class="day-inner">
       <div class="photo-wrap">
         <!-- Costa da Caparica vraie plage avec vagues -->
-        <img src="https://i.ytimg.com/vi/r7QTnE18xKU/maxresdefault.jpg&fit=crop&crop=bottom" alt="Costa da Caparica" loading="lazy">
+        <img src="https://i.ytimg.com/vi/r7QTnE18xKU/maxresdefault.jpg" alt="Costa da Caparica" loading="lazy">
         <div class="photo-overlay"></div>
         <div class="day-num">Jour 3</div>
         <div class="badges"><span class="badge bp">🧺 Pique-nique</span></div>
@@ -348,117 +348,6 @@ footer span{color:var(--terra-l)}
     </div>
   </div>
 </section>
-
-<!-- CARTE SVG simple -->
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-<style>
-html, body {
-    margin: 0;
-    height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-#map {
-    width: 100%;
-    height: 100%;
-}
-
-.leaflet-popup-content-wrapper {
-    border-radius: 16px;
-    padding: 6px;
-}
-
-.leaflet-popup-content {
-    margin: 10px 14px;
-}
-
-.popup-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 4px;
-}
-
-.popup-text {
-    color: #666;
-    font-size: 14px;
-}
-
-.custom-marker {
-    width: 18px;
-    height: 18px;
-    background: #007AFF;
-    border: 3px solid white;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,.3);
-}
-</style>
-</head>
-
-<body>
-
-<div id="map"></div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-
-// Création de la carte
-const map = L.map('map', {
-    zoomControl: true
-});
-
-// Fond de carte moderne (Carto Voyager)
-L.tileLayer(
-'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-{
-    attribution: '&copy; OpenStreetMap & Carto'
-}).addTo(map);
-
-// Liste des lieux
-const places = [
-    {
-        name: 'Paris',
-        desc: 'Début du voyage',
-        coords: [48.8566, 2.3522]
-    },
-    {
-        name: 'Rome',
-        desc: 'Super visite',
-        coords: [41.9028, 12.4964]
-    }
-];
-
-// Icône personnalisée
-const customIcon = L.divIcon({
-    className: '',
-    html: '<div class="custom-marker"></div>',
-    iconSize: [24, 24],
-    iconAnchor: [12, 12]
-});
-
-// Ajouter les marqueurs
-const bounds = [];
-
-places.forEach(place => {
-
-    L.marker(place.coords, { icon: customIcon })
-        .addTo(map)
-        .bindPopup(`
-            <div class="popup-title">${place.name}</div>
-            <div class="popup-text">${place.desc}</div>
-        `);
-
-    bounds.push(place.coords);
-});
-
-// Zoom automatique sur tous les lieux
-map.fitBounds(bounds, {
-    padding: [50, 50]
-});
-
-</script>
 
 <!-- PICNIC -->
 <section id="pensebete">
