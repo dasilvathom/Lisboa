@@ -111,6 +111,16 @@ svg#map{width:100%;height:auto;display:block;font-family:'Inter',sans-serif}
 .resa-detail{font-size:.8rem;color:var(--muted);line-height:1.5}
 .resa-detail b{color:var(--night)}
 
+/* Links */
+.custom-link,
+.custom-link:visited,
+.custom-link:hover,
+.custom-link:active {
+  color: var(--blue);   /* ou #378ADD */
+  text-decoration: none;
+  font-weight: 700;
+}
+
 /* FOOTER */
 footer{background:var(--night);text-align:center;padding:2.5rem 2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.3)}
 footer span{color:var(--terra-l)}
@@ -169,7 +179,7 @@ footer span{color:var(--terra-l)}
         <h3 class="day-title">Arrivée à Lisbonne</h3>
         <ul class="items">
           <li class="item"><span class="it">22h00</span><span class="tx">Arrivée à Almada — installation</span></li>
-          <li class="item"><span class="it">Soir</span><span class="tx">Dîner au <b>Time Out Market</b> <a href="https://www.timeout.com/time-out-market">(+)</a> ou resto proche</span></li>
+          <li class="item"><span class="it">Soir</span><span class="tx">Dîner au <b>Time Out Market</b> <a href="https://www.timeout.com/time-out-market" class="custom-link">(+)</a> ou resto proche</span></li>
           <li class="item"><span class="it"></span><span class="tx">Pas de courses ce soir — repos 🛌</span></li>
         </ul>
       </div>
